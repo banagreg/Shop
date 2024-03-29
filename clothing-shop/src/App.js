@@ -1,10 +1,18 @@
-import Directory from './components/Directory/Directory';
-import { categories } from './constants/constants';
+import Navigation from './routes/Navigation/Navigation';
+import { Route, Routes } from 'react-router-dom';
+import Home from './routes/Home/Home';
+import SignIn from './routes/SignIn/SignIn';
 
 const App = () => {
 
   return (
-    <Directory categories={categories} />
+    <Routes>
+      <Route path='/' element={<Navigation />}>
+        <Route index element={<Home />} />
+        <Route path='sign-in' element={<SignIn />} />
+      </Route>
+
+    </Routes>
   );
 }
 
