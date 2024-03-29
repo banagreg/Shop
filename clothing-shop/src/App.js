@@ -1,9 +1,10 @@
+import Directory from './components/Directory/Directory';
+import { categories } from './constants/constants';
 
 const App = () => {
+
   return (
-    <div >
-      Hello world!
-    </div>
+    <Directory categories={categories} />
   );
 }
 
