@@ -1,5 +1,5 @@
 .button-container {
-	min-width: 165px;
+	max-width: 80%;
 	width: auto;
 	height: 50px;
 	letter-spacing: 0.5px;
@@ -9,7 +9,7 @@
 	background-color: black;
 	color: white;
 	text-transform: uppercase;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-weight: bolder;
 	border: none;
 	cursor: pointer;
@@ -42,5 +42,20 @@
 			color: white;
 			border: none;
 		}
+	}
+
+	@media screen and (max-width: 960px) {
+		font-size: 12px;
+		padding: 2px;
+	}
+
+	@media screen and (max-width: 800px) {
+		font-size: 9px;
+		padding: 2px;
+	}
+
+	@media screen and (max-width: 414px) {
+		font-size: 5px;
+		padding: 2px;
 	}
 }
