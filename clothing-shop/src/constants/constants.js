@@ -25,3 +25,9 @@ export const categories = [
 		"imageUrl": "https://i.ibb.co/R70vBrQ/men.png"
 	}
 ]
+
+export const BUTTON_TYPE_CLASSES = {
+	base: 'base',
+	google: 'google-sign-in',
+	inverted: 'inverted',
+};

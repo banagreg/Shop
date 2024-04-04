@@ -1,44 +1,42 @@
-import { Outlet, Link } from "react-router-dom";
-import { ReactComponent as CrownLogo } from '../../assets/crown.svg';
-import './Navigation.scss';
-import { useContext, useState } from "react";
-import { UserContext } from "../../contexts/user.context";
-import { signOutUser } from "../../utils/firebase/firebase.utils";
-import CartIcon from "../../components/CartIcon/CartIcon";
-import CartDropdown from "../../components/CartDropdown/CartDropdown";
-import { CartContext } from "../../contexts/cart.context";
+import { Outlet, } from "react-router-dom"
+import './Navigation-styles.jsx'
+import { useContext } from "react"
+import { UserContext } from "../../contexts/user.context"
+import { signOutUser } from "../../utils/firebase/firebase.utils"
+import CartIcon from "../../components/CartIcon/CartIcon"
+import CartDropdown from "../../components/CartDropdown/CartDropdown"
+import { CartContext } from "../../contexts/cart.context"
+import { LogoContainer, NavLink, NavLinks, NavigationContainer } from "./Navigation-styles.jsx"
+import { ReactComponent as CrownLogo } from '../../assets/crown.svg'
 
 const Navigation = () => {
 	const { currentUser } = useContext(UserContext);
 	const { isDropdownOpen } = useContext(CartContext);
 
-	const signOutHandler = async () => {
-		signOutUser();
-	}
-
 	return (
 		<>
-			<div className='navigation'>
+			<NavigationContainer>
+				<LogoContainer to='/'>
+					<CrownLogo />
+				</LogoContainer>
+				<NavLinks>
+					<NavLink to='/shop'>SHOP</NavLink>
 
-				<Link className='logo-container' to='/'>
-					<CrownLogo className='logo' />
-				</Link>
-
-				<div className='nav-links-container'>
-					<Link className='nav-link' to='/shop'>SHOP</Link>
 					{currentUser ? (
-						<span className='nav-link' onClick={signOutHandler}>SIGN OUT</span>
+						<NavLink as='span' onClick={signOutUser}>
+							SIGN OUT
+						</NavLink>
 					) : (
-						<Link className='nav-link' to='/auth'>SIGN IN</Link>
+						<NavLink to='/auth'>SIGN IN</NavLink>
 					)}
-					<CartIcon />
-				</div>
-				{isDropdownOpen && <CartDropdown />}
-			</div>
 
+					<CartIcon />
+				</NavLinks>
+				{isDropdownOpen && <CartDropdown />}
+			</NavigationContainer>
 			<Outlet />
 		</>
 	);
 };
 
-export default Navigation;
+export default Navigation
