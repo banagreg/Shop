@@ -6,8 +6,12 @@ const CategoryItem = ({ category }) => {
 	const { imageUrl, title } = category;
 	const navigate = useNavigate();
 
+	const onNavigateHandler = () => {
+		navigate(`/shop/${category.title}`)
+	};
+
 	return (
-		<CategoryItemContainer onClick={() => navigate(`/shop/${category.title}`)}>
+		<CategoryItemContainer onClick={onNavigateHandler}>
 			<BackgroundImage imageurl={imageUrl}
 			/>
 			<Body>
