@@ -3,8 +3,8 @@ import { CartDropdownContainer, CartItems, EmptyMessage } from './CartDropdown-s
 import CartItem from '../CartItem/CartItem'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectCartItems } from '../../store/cart/cart.selector.js'
-import { setIsDropdownOpen } from '../../store/cart/cart.action.js'
+import { selectCartItems } from '../../store/cart/cart.selector'
+import { setIsCartOpen } from '../../store/cart/cart.slice.js'
 
 const CartDropdown = () => {
 	const cartItems = useSelector(selectCartItems);
@@ -13,7 +13,7 @@ const CartDropdown = () => {
 
 	const goToCheckoutHandler = () => {
 		navigate('/checkout');
-		dispatch(setIsDropdownOpen(false));
+		dispatch(setIsCartOpen(false));
 	}
 
 	return (

@@ -8,7 +8,6 @@ import {
 	signInWithEmailAndPassword,
 	signOut,
 	onAuthStateChanged,
-
 } from 'firebase/auth';
 import {
 	doc,
