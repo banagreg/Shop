@@ -20,7 +20,7 @@ import {
 	getDocs
 } from 'firebase/firestore'
 
-import { FIREBASE_API_KEY } from '../../constants/private';
+import { FIREBASE_API_KEY } from '../../constants/firebaseKey';
 
 const firebaseConfig = {
 	apiKey: FIREBASE_API_KEY,
