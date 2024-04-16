@@ -3,11 +3,11 @@ import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
 import { BUTTON_TYPE_CLASSES } from '../../constants/constants';
 import { ButtonsContainer, SignInContainer } from './SignInForm-styles';
-import { useDispatch } from 'react-redux'
 import {
 	signInUserWithEmailAndPassword,
 	signInWithGooglePopup,
 } from '../../utils/firebase/firebase.utils';
+import { useNavigate } from "react-router-dom";
 
 const defaultFormFields = {
 	email: '',
@@ -17,10 +17,11 @@ const defaultFormFields = {
 const SignInForm = () => {
 	const [formFields, setFormFields] = useState(defaultFormFields);
 	const { email, password } = formFields;
-	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const signInWithGoogle = async () => {
 		await signInWithGooglePopup();
+		navigate('/');
 	};
 
 	const resetFormFields = () => {
@@ -38,6 +39,7 @@ const SignInForm = () => {
 		try {
 			await signInUserWithEmailAndPassword(email, password);
 			resetFormFields();
+			navigate('/');
 		} catch (error) {
 			switch (error.code) {
 				case 'auth/wrong-password':
