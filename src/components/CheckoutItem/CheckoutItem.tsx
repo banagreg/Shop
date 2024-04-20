@@ -3,8 +3,9 @@ import { Arrow, BaseSpan, CheckoutItemContainer, ImageContainer, Quantity, Remov
 import { addItemToCart, clearItemFromCart, removeItemFromCart } from '../../store/cart/cart.slice'
 import { useDispatch } from 'react-redux'
 import { CartItemProps } from '../../types/types';
+import { memo } from 'react';
 
-const CheckoutItem = ({ cartItem }: CartItemProps) => {
+const CheckoutItem = memo(({ cartItem }: CartItemProps) => {
 	const { name, quantity, imageUrl, price } = cartItem;
 	const dispatch = useDispatch();
 
@@ -29,6 +30,6 @@ const CheckoutItem = ({ cartItem }: CartItemProps) => {
 			<RemoveButton onClick={handleClearItem}>&#10005;</RemoveButton>
 		</CheckoutItemContainer>
 	);
-};
+});
 
 export default CheckoutItem

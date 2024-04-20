@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import Button from '../Button/Button'
 import { CartDropdownContainer, CartItems, EmptyMessage } from './CartDropdown-styles'
 import CartItem from '../CartItem/CartItem'
@@ -12,10 +13,10 @@ const CartDropdown = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const goToCheckoutHandler = () => {
+	const goToCheckoutHandler = useCallback(() => {
 		navigate('/checkout');
 		dispatch(setIsCartOpen(false));
-	}
+	}, []);
 
 	return (
 		<CartDropdownContainer>
