@@ -10135,6 +10135,11 @@ undici@5.28.3:
   dependencies:
     "@fastify/busboy" "^2.0.0"
 
+undici@^6.14.0:
+  version "6.14.0"
+  resolved "https://registry.yarnpkg.com/undici/-/undici-6.14.0.tgz#c176d7b1744793416f42de7609645a182b968dcc"
+  integrity sha512-esJ/x2QU5boTG6thdA0o4qP3cv/oPx9mcQGcp8TAHI+ZBTa0EvM9Jiyp0ILdPGLGxs5HATTKrJqAK+YhrSFicg==
+
 unicode-canonical-property-names-ecmascript@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/unicode-canonical-property-names-ecmascript/-/unicode-canonical-property-names-ecmascript-2.0.0.tgz#301acdc525631670d39f6146e0e77ff6bbdebddc"
