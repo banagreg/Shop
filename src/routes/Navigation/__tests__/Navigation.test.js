@@ -1,6 +1,8 @@
-import { screen } from "@testing-library/react"
+import { fireEvent, getByText, screen, waitFor } from "@testing-library/react"
 import Navigation from "../Navigation"
 import { renderWithProviders } from "../../../utils/test/test.utils"
+import * as reactRedux from 'react-redux'
+import * as firebaseUtils from '../../../utils/firebase/firebase.utils'
 
 describe('Navigation tests', () => {
 	test('Should render Sign In link if the user is not signed in', () => {
@@ -58,6 +60,25 @@ describe('Navigation tests', () => {
 
 		const dropdownTextElement = screen.getByText(/your cart is empty/i);
 		expect(dropdownTextElement).toBeInTheDocument();
+	});
+
+	test('Should actually SignOut when clicking on the SignOut link', async () => {
+		const signOutUserMock = jest.fn();
+
+		jest.spyOn(firebaseUtils, 'signOutUser').mockImplementation(signOutUserMock);
+
+		renderWithProviders(<Navigation />, {
+			preloadedState: {
+				user: {
+					currentUser: {},
+				}
+			}
+		});
+
+		fireEvent.click(screen.getByText(/sign out/i));
+		expect(signOutUserMock).toHaveBeenCalled();
+
+		signOutUserMock.mockClear();
 	});
 
 })
